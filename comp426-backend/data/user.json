@@ -1,2 +1,32 @@
 {
+  "vibhu": {
+    "post": [
+      {
+        "file": {},
+        "labels": [
+          "Paper bag",
+          "Shopping bag",
+          "Packaging and labeling",
+          "Floor",
+          "Flooring",
+          "Carton"
+        ]
+      },
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Orange soft drink",
+          "Glass bottle",
+          "Orange drink",
+          "Beer bottle",
+          "Non-alcoholic beverage",
+          "Squash",
+          "Beer",
+          "Soft drink"
+        ]
+      }
+    ]
+  }
 }

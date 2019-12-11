@@ -1,5 +1,8 @@
 import RecycleClassifier from "./model.js"; 
-$(document).ready(() => {
+import {getStatus} from "./account.js";
+import {postImage} from "./user.js";
+import {getFilteredResults, getDatabase} from "./search.js";
+$(document).ready(async () => {
 
     
     let isMobile = false;
@@ -14,6 +17,10 @@ $(document).ready(() => {
     } else {
         $('#image-upload').append(renderFileUpload());
     }
+
+    let user = await getStatus();
+    console.log()
+    $("#user-welcome").html('Welcome '+user.user.data.first+'!');
 
    
 
@@ -54,16 +61,18 @@ $(document).ready(() => {
         $("#modal").toggleClass("is-active");
     });
 
-    $("#searchbar").on('keypress', function(e) {
-        if(e.which == 13) {
-            let text = $('#searchbar').val();
+    $("#searchbar").on('keyup', async function(e) {
+
+            debounce(searchDatabase, 200);
             
-            if (text != '') {
-                let promise = classifier.isRecyclable(text);
-                promise.then(function(result) {
-                    let num = result[1];
+           // if (text != '') {
+                //let promise = classifier.isRecyclable(text);
+               // promise.then(function(result) {
+                    //let num = result[1];
                     
-                    if (result[0]) {
+                  //  let res = getFilteredResults(text);
+
+                    /*if (result[0]) {
                         $('#r-label').html("Recyclable");
                         $('#r-label').addClass('has-text-success');
                         $('#r-label').removeClass('has-text-danger');
@@ -72,16 +81,16 @@ $(document).ready(() => {
                         $('#r-label').html("Non-recyclable");
                         $('#r-label').removeClass('has-text-success');
                         $('#r-label').addClass('has-text-danger');
-                    }
-                    $('#modal').toggleClass('is-active');
+                    }*/
+                    //$('#modal').toggleClass('is-active');
     
-                    $('#num-items').html("Cycle users have collectively recycled "+num+" items!");
-                });
+                    //$('#num-items').html("Cycle users have collectively recycled "+num+" items!");
+               // });
                 
             
-            }
+           // }
             
-        }
+        
     });
 
     $('input[type="file"]').change(function(e){
@@ -97,6 +106,7 @@ $(document).ready(() => {
             $('#upload-button').toggleClass('is-loading');
             let promise = classifier.uploadImage(files[0]);
             promise.then(function(result) {
+                //successful classification
                 if (result.recyclable) {
                     $('#r-label').html("Recyclable");
                     $('#r-label').toggleClass('has-text-success');
@@ -106,6 +116,7 @@ $(document).ready(() => {
                     $('#r-label').toggleClass('has-text-success');
                 }
                 
+
                 
                 
                 $('#ranked-labels').replaceWith(`<ol type="1" id="ranked-labels"></ol>`);
@@ -114,7 +125,11 @@ $(document).ready(() => {
                 $('#modal').toggleClass('is-active');
                 $('#upload-button').toggleClass('is-loading');
 
-                $('#num-items').html('Cycle users have collectively recycled '+result.main_number+' items!');
+
+                //upload to database
+                postImage(files[0], result.labels);
+
+                //$('#num-items').html('Cycle users have collectively recycled '+result.main_number+' items!');
             });
             
             
@@ -122,12 +137,32 @@ $(document).ready(() => {
         }
     });
 
-   
-   
-   
-    
 
 });
+let timeout;
+function debounce(fn, timeDelay) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+        fn();
+    }, timeDelay);
+
+}
+
+async function searchDatabase() {
+    let text = $('#searchbar').val();
+    $('#search-results').empty();
+    if (text != '') {
+        let res = await getFilteredResults(text);
+    
+        
+        let num = Math.min(res.length, 10);
+        for(let i = 0; i<num; i++) {
+            console.log(res[i]);
+            $('#search-results').append('<li>'+res[i]+'</li>');
+        }
+    } 
+    
+}
 
 function handleKeyPress(e) {
     let classifier = e.data;

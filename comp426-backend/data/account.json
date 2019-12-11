@@ -1,2 +1,27 @@
 {
+  "users": {
+    "10u892": {
+      "passwordHash": "$2a$10$DZ23kp/PWqR3WKlU07K2J.gb/5buC1nBDn4xlY2aNXAxRz3J2SuTe"
+    },
+    "broatmeals": {
+      "passwordHash": "$2a$10$U2EyfDdCooYS7sZs4db3O.x0hjkNhtiz2nbycWti6SCW5lDBoA8gG"
+    },
+    "asdf": {
+      "passwordHash": "$2a$10$.cMc5P6eLtjmpyhfls0iheL0KDK9FHfYwPH0j.CzxjJ5uWngv8prq"
+    },
+    "gdimi": {
+      "passwordHash": "$2a$10$xlhcVfseyRqtF533bbU3iOSoa3ofR6s8tPxw5/NuBwV/LMdrWIgXm",
+      "data": {
+        "first": "george",
+        "last": "dim"
+      }
+    },
+    "vibhu": {
+      "passwordHash": "$2a$10$AoYck5embvPiJEC2kCPJHuiiqKCyVEtzgCnAJzFw0D2aeH5UKY9S6",
+      "data": {
+        "first": "Vibhu",
+        "last": "Ambil"
+      }
+    }
+  }
 }

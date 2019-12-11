@@ -1,25 +1,66 @@
 import {createAccount} from "./assets/js/account.js";
 
+import {setToken} from "./assets/js/token.js";
+
 $(function() {
-    alert('test');
     $('#login-sign-up-box').append(getLoginDiv());
     $("#signup").on("click",signUpButton);
+    $("#login-sign-up-box").on('click', '#su-button', null, signUpUser);
+    $("#login-sign-up-box").on('click', '#li-button', null, loginUser);
+
     
-
 });
+async function loginUser(event) {
+    event.preventDefault();
+    let username = $('#li-username').val();
+    let password = $('#li-password').val();
 
-function signUpUser() {
-    let fname = $('#su-fname').text();
-    let lname = $('#su-lname').text();
-    let username = $('#su-username').text();
-    let password = $('#su-password').text();
-    createAccount(fname, lname, username, password);
+    const pubRoot = new axios.create({
+        baseURL: "http://localhost:3000/account"
+    });
+    const res = await pubRoot.post(`/login/`, {'name':username, 'pass':password});
+    console.log(res);
+    setToken(res.data.jwt);
+    return res;
 
 }
 
-function signUpButton(){
-    alert('asdf')
-    $("#login-sign-up-box").replaceWith(getSignUpDiv());
+async function signUpUser(event) {
+    event.preventDefault();
+    let fname = $('#su-fname').val();
+    let lname = $('#su-lname').val();
+    let username = $('#su-username').val();
+    let password = $('#su-password').val();
+    //console.log("test");
+   // createAccount(username, password);
+    /*const res = await axios({
+        method: "POST",
+        baseURL: "http://localhost:3000/account/create",
+        body: { "name" : username,
+                 "pass" : password,
+                "data": {}},
+        
+    });
+    return res;*/
+    const pubRoot = new axios.create({
+        baseURL: "http://localhost:3000/account"
+    });
+
+    const userAxios = new axios.create({
+        baseURL: "http://localhost:3000/"
+    });
+    //await userAxios.post('/user/users', {"name":username});
+    return await pubRoot.post(`/create/`, {'name':username, 'pass':password, data:{'first':fname, 'last':lname}});
+
+    
+
+
+}
+
+function signUpButton() {
+    $("#login-sign-up-box").empty();
+    $("#login-sign-up-box").append(getSignUpDiv());
+    
 }
 
 function getLoginDiv() {
@@ -42,7 +83,7 @@ function getLoginDiv() {
                               Remember me
                       </label>
                     </div>
-                        <button class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                        <button id="li-button" class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                 </form>
             </div>`;
     return html;
@@ -67,7 +108,7 @@ function getSignUpDiv() {
 
                     <div class="field">
                         <div class="control">
-                        <input id="su-username" class="input is-large" type="email" placeholder="Username">
+                        <input id="su-username" class="input is-large" placeholder="Username">
                         </div>
                     </div>
 
@@ -77,7 +118,7 @@ function getSignUpDiv() {
                         </div>
                     </div>
                     
-                        <button class="button is-block is-info is-large is-fullwidth">Sign-up <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                        <button id="su-button" class="button is-block is-info is-large is-fullwidth">Sign-up <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                 </form>
             </div>`;    
     return html;

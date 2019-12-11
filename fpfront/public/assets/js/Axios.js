@@ -1,5 +1,5 @@
 import {getToken} from "./token.js";
-import {axios} from "../../node_modules/axios/dist/axios";
+
 export const baseURL = 'http://localhost:3000';
 
 export const getAxiosInstance = function (middlePath = '') {
@@ -8,3 +8,4 @@ export const getAxiosInstance = function (middlePath = '') {
     baseURL: `${baseURL}${middlePath}`
   });
 };
+

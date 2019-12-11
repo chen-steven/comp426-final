@@ -15,9 +15,9 @@ export async function login({name, pass}) {
   }
 }
 
-export async function createAccount({fname, lname, username, pass}) {
+export async function createAccount({username, pass}) {
   try {
-    await axios.post(`/create`, {fname, lname, username, pass});
+    await axios.post(`/create`, {name: username, pass: pass});
     return true;
   } catch (error) {
     return false;
@@ -31,3 +31,4 @@ export async function getStatus() {
     return false;
   }
 }
+
