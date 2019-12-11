@@ -34,6 +34,7 @@
                                 <span></span>
                                 <span></span>
                                 <span></span>
+                                
                             </span>
                         </div>
                         <div id="navbarMenu" class="navbar-menu is-right is-success" aria-label="menu">
@@ -48,17 +49,32 @@
                                 <a class="navbar-item" href="#info-section">
                                     Info
                                 </a>
-                                <a class="navbar-item navbar-end" href="#impact-section">
+                                <a class="navbar-item" href="#impact-section">
                                     Impact
                                 </a>
+                                
                             
-                        </div>
+                            </div>
+                            <div class="navbar-end">
+                                <div class="navbar-item">
+                                  <div class="buttons">
+                                    <a id="logout-button" class="button is-primary">
+                                    
+                                      <strong>Logout</strong>
+                                    </a>
+                                    <a id="login-button" class="button is-light" href="./login.html">
+                                      Log in / Sign up
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+
                     </div>
                 </nav>
             </div>
             <div class="hero-body">
                 <div class="container has-text-centered">
-                    <h1 class="title has-text-weight-bold">
+                    <h1 id="welcome-message" class="title has-text-weight-bold">
                     Cycle, a recycling classifer
                     </h1>
                     <h2 class="subtitle">
@@ -105,7 +121,7 @@
                     <div class="modal-card">
                       <header class="modal-card-head">
                         <p id="r-label" class="modal-card-title"></p>
-                        <button class="delete" aria-label="close"></button>
+                        <button class="delete close-modal-button" aria-label="close"></button>
                       </header>
                       <section  class="modal-card-body">
                           <div class="container">
@@ -134,6 +150,7 @@
                 <button id="closemodal" class="modal-close is-large" aria-label="close"></button>
             </div>
         </div>
+
         <section id="info-section" class="container ">
             <div class="columns features">
                 <div class="column is-4">
@@ -157,15 +174,15 @@
                     </div>
                 </div>
                 <div class="column is-4">
+                        
                     <div class="card is-shady">
                         <div class="card-image has-text-centered">
                             <i class="fa fa-empire"></i>
                         </div>
                         <div class="card-content">
                             <div class="content">
-                                <h4>Tempor orci dapibus ultrices in.</h4>
-                                <p>Ut venenatis tellus in metus vulputate. Amet consectetur adipiscing elit pellentesque. Sed arcu non odio euismod lacinia at quis risus. Faucibus turpis in eu mi bibendum neque egestas cmonsu songue. Phasellus vestibulum lorem
-                                sed risus.</p>
+                                <h4 id="total-count"> </h4>
+                                <p id="total-count-content"> </p>
                                 <p><a href="#">Learn more</a></p>
                             </div>
                         </div>
@@ -178,19 +195,26 @@
                         </div>
                         <div class="card-content">
                             <div class="content">
-                                <h4> Leo integer malesuada nunc vel risus. </h4>
-                                <p>Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam. Commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                                <h4> Thank you for your support! </h4>
+                                <p>Create an account and join a community of environmentalists.</p>
                                 <p><a href="#">Learn more</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="impact-section" class="intro column is-8 is-offset-2">
+
+
+
+            <!-- <div id="impact-section" class="intro column is-8 is-offset-2">
                 <h1 class="title">Our Impact</h1><br>
                 <h2 id="num-items" class="title has-text-weight-light">Cycle users have collectively recycled 0 items</h2>
-            </div>
-            <div class="sandbox has-text-centered">
+            </div> -->
+
+            <hr>
+
+
+            <!-- <div class="sandbox has-text-centered">
                 <div class="tile is-ancestor">
                     <div class="tile is-parent is-shady">
                         <article class="tile is-child notification is-white">
@@ -264,8 +288,24 @@
                 
                     
                 </div>
-            </div>
+            </div> -->
         </section>
+
+
+        <!-- USER POSTS -->
+        <section class="container ">
+            
+            <div id="timeline-section" class="columns is-multiline features">
+
+
+
+            </div>
+
+
+        </section>
+
+
+
         <footer class="footer">
             <div class="container">
                 <div class="columns">

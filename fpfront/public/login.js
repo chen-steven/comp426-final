@@ -1,5 +1,5 @@
 import {createAccount} from "./assets/js/account.js";
-
+import {setCount} from "./assets/js/user.js";
 import {setToken} from "./assets/js/token.js";
 
 $(function() {
@@ -21,6 +21,8 @@ async function loginUser(event) {
     const res = await pubRoot.post(`/login/`, {'name':username, 'pass':password});
     console.log(res);
     setToken(res.data.jwt);
+
+    window.location.href = "/index.html";
     return res;
 
 }
@@ -77,15 +79,14 @@ function getLoginDiv() {
                              <input id="li-password" class="input is-large" type="password" placeholder="Your Password">
                          </div>
                     </div>
-                    <div class="field">
-                      <label class="checkbox">
-                         <input type="checkbox">
-                              Remember me
-                      </label>
-                    </div>
-                        <button id="li-button" class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                    
+                        <a id="li-button" class="button is-info is-large" href="/index.html">
+                            Log in
+                        </a>
+                        
                 </form>
             </div>`;
+          //  <button id="li-button" class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
     return html;
 }
 
@@ -117,7 +118,6 @@ function getSignUpDiv() {
                             <input id="su-password" class="input is-large" type="password" placeholder="Your Password">
                         </div>
                     </div>
-                    
                         <button id="su-button" class="button is-block is-info is-large is-fullwidth">Sign-up <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                 </form>
             </div>`;    

@@ -1,6 +1,7 @@
 import RecycleClassifier from "./model.js"; 
 import {getStatus} from "./account.js";
-import {postImage} from "./user.js";
+import {postImage, getPosts, getCount, updatePosts} from "./user.js";
+import {incrementCount, getGlobalCount} from "./public.js";
 import {getFilteredResults, getDatabase} from "./search.js";
 $(document).ready(async () => {
 
@@ -19,8 +20,23 @@ $(document).ready(async () => {
     }
 
     let user = await getStatus();
-    console.log()
-    $("#user-welcome").html('Welcome '+user.user.data.first+'!');
+
+   
+    
+    //if logged in
+    if(user) {
+        
+        
+        renderLoggedIn(user);
+        
+    } else {
+        renderLoggedOut();
+    }
+
+    let num = await getGlobalCount();
+    $('#total-count').html('<strong>'+num['count']+"</strong> items have been classfied by all users!")
+    
+    $('#total-count-content').html("Cycle has helped reduce carbon dioxide emissions by <strong>"+Math.ceil(0.08399613*num['count'])+'</strong> pounds');
 
    
 
@@ -56,8 +72,8 @@ $(document).ready(async () => {
     $(".navbar-menu").toggleClass("is-active");
 
     });
-
-    $(".delete").on('click', function(event) {
+    //FDSJKFLS:DFKL:SDJFSDK:FJSKDFJS:DFJ:KSDJFLKJSDFL:KJSDLK:FJKLS:DJFLK:SDJFL:KSDJFLK:SDJFL:KJSDL:FKJLS:DKFJLS:DKFJDLS:KJFLS:DJFKL:SD
+    $(".close-modal-button").on('click', function(event) {
         $("#modal").toggleClass("is-active");
     });
 
@@ -101,44 +117,58 @@ $(document).ready(async () => {
     });
     
     $('#upload-button').on('click', function(e) {
-        var files = $('#imagefileupload').prop("files")
-        if(files.length == 1) {
-            $('#upload-button').toggleClass('is-loading');
-            let promise = classifier.uploadImage(files[0]);
-            promise.then(function(result) {
-                //successful classification
-                if (result.recyclable) {
-                    $('#r-label').html("Recyclable");
-                    $('#r-label').toggleClass('has-text-success');
-
-                } else {
-                    $('#r-label').html("Non-recyclable");
-                    $('#r-label').toggleClass('has-text-success');
-                }
-                
-
-                
-                
-                $('#ranked-labels').replaceWith(`<ol type="1" id="ranked-labels"></ol>`);
-                console.log(result.labels);
-                renderModalCard(result.labels);
-                $('#modal').toggleClass('is-active');
-                $('#upload-button').toggleClass('is-loading');
-
-
-                //upload to database
-                postImage(files[0], result.labels);
-
-                //$('#num-items').html('Cycle users have collectively recycled '+result.main_number+' items!');
-            });
-            
-            
-
-        }
+        uploadImage(classifier);
     });
 
 
 });
+
+function uploadImage(classifier) {
+    var files = $('#imagefileupload').prop("files")
+    if(files.length == 1) {
+        $('#upload-button').toggleClass('is-loading');
+        let promise = classifier.uploadImage(files[0]);
+        promise.then(async function(result) {
+            //successful classification
+            if (result.recyclable) {
+                $('#r-label').html("Recyclable");
+                $('#r-label').toggleClass('has-text-success');
+
+            } else {
+                $('#r-label').html("Non-recyclable");
+                $('#r-label').toggleClass('has-text-success');
+            }
+            
+
+            
+            
+            $('#ranked-labels').replaceWith(`<ol type="1" id="ranked-labels"></ol>`);
+            console.log(result.labels);
+            renderModalCard(result.labels);
+            $('#modal').toggleClass('is-active');
+            $('#upload-button').toggleClass('is-loading');
+
+
+            //upload to database
+
+            //if logged in
+
+            let user = await getStatus();
+            if(user) {
+                await postImage(files[0], result.labels);
+                renderPosts();
+            }  
+            
+            incrementCount();
+
+            //$('#num-items').html('Cycle users have collectively recycled '+result.main_number+' items!');
+        });
+            
+            
+
+        }
+}
+
 let timeout;
 function debounce(fn, timeDelay) {
     clearTimeout(timeout);
@@ -146,6 +176,45 @@ function debounce(fn, timeDelay) {
         fn();
     }, timeDelay);
 
+}
+
+function renderLoggedIn(user) {
+    renderPosts();
+    $('#logout-button').on('click', () => {
+        window.localStorage.removeItem('token');
+        location.reload();
+    });
+    $('#login-button').remove();
+    $('#welcome-message').html("Welcome to Cycle, "+user.user.data.first+'!');
+
+    console.log('JSLDKFKLSDF');
+    //add event handler for delete button
+    $('#timeline-section').on('click', ".delete-post-button", null, deletePost);
+    
+
+
+
+
+
+}
+
+async function deletePost(event) {
+    let data = await getPosts();
+    console.log(data);
+    let id = parseInt($(event.target).closest("div.post").attr("id").substring(4));
+
+    let $postDiv = $(event.target).closest("div.post");
+    let newList = deletePostFromJSON(id, data);
+    updatePosts(newList);
+
+    $postDiv.hide("slow", function(){ tweetDiv.remove(); })
+
+
+    
+}
+
+function renderLoggedOut() {
+    $('#logout-button').remove();
 }
 
 async function searchDatabase() {
@@ -235,11 +304,69 @@ function renderFileUpload() {
     return html;
 }
 
+async function renderPosts() {
+    
+    let data = await getPosts();
+    console.log(data);
+    let timeline = $('#timeline-section');
+    timeline.empty();
+    for(let i = 0; i<data.length; i++) {
+        console.log(data[i]);
+        timeline.append(renderCard(data[i]));
+    }
+}
+
+function deletePostFromJSON(id, list) {
+    return list.filter((post) => {
+        return post.id != id;
+    });
+}
+
+function renderCard(post) {
+    let html = `
+<div id=${"post"+post.id+'"'} class="post column is-4">
+    <div class="card is-shady">
+
+         <header class="card-header">
+            <p class="card-header-title">
+            ${post.labels[0]}
+            </p>
+            <span class="card-header-icon">
+            <a class="delete delete-post-button" aria-hidden="true"></a>
+            
+            </a>
+            </span>
+        </header>
+
+       
+        
+        <div class="card-content">
+            <div class="content" >
+                <h4>${post.labels[0]}</h4>
+                
+                    <p> ${post.labels}<p>
+                    
+                
+            
+            </div>
+        </div>
+    </div>
+</div>`
+    return html;
+}
+
 function renderModalCard(data) {
 
     for(let i = 0; i<data.length; i++) {
         $('#ranked-labels').append(`<li>${data[i]}</li>`);
     }
     
+}
+
+function renderContribute() {
+    let html = `
+        <section>
+    `;
+    return html;
 }
 

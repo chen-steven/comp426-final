@@ -4,13 +4,80 @@
       {
         "file": {},
         "labels": [
-          "Paper bag",
-          "Shopping bag",
-          "Packaging and labeling",
-          "Floor",
-          "Flooring",
-          "Carton"
-        ]
+          "Property",
+          "Building",
+          "Architecture",
+          "Residential area",
+          "Real estate",
+          "Sky",
+          "Urban area",
+          "Room",
+          "House",
+          "City"
+        ],
+        "id": 3
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 8
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 9
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 13
+      }
+    ],
+    "count": {
+      "count": 16
+    }
+  },
+  "gdimi": {
+    "count": {
+      "count": 25
+    },
+    "post": [
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Orange soft drink",
+          "Glass bottle",
+          "Orange drink",
+          "Beer bottle",
+          "Non-alcoholic beverage",
+          "Squash",
+          "Beer",
+          "Soft drink"
+        ],
+        "id": 0
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 1
       },
       {
         "file": {},
@@ -25,7 +92,239 @@
           "Squash",
           "Beer",
           "Soft drink"
-        ]
+        ],
+        "id": 2
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 3
+      },
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Orange soft drink",
+          "Glass bottle",
+          "Orange drink",
+          "Beer bottle",
+          "Non-alcoholic beverage",
+          "Squash",
+          "Beer",
+          "Soft drink"
+        ],
+        "id": 4
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 5
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 6
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 7
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 8
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 9
+      },
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Orange soft drink",
+          "Glass bottle",
+          "Orange drink",
+          "Beer bottle",
+          "Non-alcoholic beverage",
+          "Squash",
+          "Beer",
+          "Soft drink"
+        ],
+        "id": 10
+      },
+      {
+        "file": {},
+        "labels": [
+          "Food",
+          "Snack",
+          "Junk food",
+          "Cuisine",
+          "Dish",
+          "Ingredient",
+          "American food",
+          "Baked goods"
+        ],
+        "id": 11
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 12
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 13
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 14
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 15
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 16
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 17
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 18
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 19
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 20
+      },
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Orange soft drink",
+          "Glass bottle",
+          "Orange drink",
+          "Beer bottle",
+          "Non-alcoholic beverage",
+          "Squash",
+          "Beer",
+          "Soft drink"
+        ],
+        "id": 21
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 22
+      },
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Orange soft drink",
+          "Glass bottle",
+          "Orange drink",
+          "Beer bottle",
+          "Non-alcoholic beverage",
+          "Squash",
+          "Beer",
+          "Soft drink"
+        ],
+        "id": 23
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 24
       }
     ]
   }
