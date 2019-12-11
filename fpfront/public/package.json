@@ -1,0 +1,27 @@
+{
+  "name": "cycle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariuszDerezinskiChoo/cycle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariuszDerezinskiChoo/cycle/issues"
+  },
+  "homepage": "https://github.com/mariuszDerezinskiChoo/cycle#readme",
+  "dependencies": {
+    "@google-cloud/vision": "^1.5.0",
+    "axios": "^0.19.0",
+    "bulma": "^0.8.0",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "nodemon": "^1.19.4"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "origin": ["*"],
+    "responseHeader": ["*"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  },
+  {
+    "origin": ["*"],
+    "responseHeader": ["*"],
+    "method": ["POST"],
+    "maxAgeSeconds": 3600
+  }
+]

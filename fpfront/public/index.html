@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cycle</title>
+        <link rel="stylesheet" href = "./assets/css/style.css"/>
+        <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <!-- Bulma Version 0.8.x-->
+        <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" />
+        
+        <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/axios/dist/axios.js"></script>
+        <script src="./assets/js/main.js" type="module"></script>
+        
+      
+        
+    </head>
+    <body>
+        <section class="hero is-success is-medium is-bold">
+            <div class="hero-head">
+                <nav class="navbar is-fixed-top has-background-success">
+                    <div class="container">
+                        <div class="navbar-brand">
+                            <a class="navbar-item" href="../">
+                                <img src="assets/images/mainlogo.png" alt="Logo">
+                            </a>
+                            <span class="navbar-burger burger" data-target="navbarMenu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </div>
+                        <div id="navbarMenu" class="navbar-menu is-right is-success" aria-label="menu">
+                            <div class="navbar-start">
+                                <a class="navbar-item is-active">
+                                    Home
+                                </a>
+                                  
+                                <a class="navbar-item" href="#search">
+                                    Search
+                                </a>
+                                <a class="navbar-item" href="#info-section">
+                                    Info
+                                </a>
+                                <a class="navbar-item navbar-end" href="#impact-section">
+                                    Impact
+                                </a>
+                            
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="title has-text-weight-bold">
+                    Cycle, a recycling classifer
+                    </h1>
+                    <h2 class="subtitle">
+                    A new way to track your environmental impact
+
+
+                    </h2>
+
+
+                    <div class="content has-text-centered" id="image-upload">
+                       
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <div id="search" class="box cta has-text-centered">
+                
+            <p class="has-text-centered has-text-info has-text-weight-bold is-size-2">
+                
+                Can't tell if something is recyclable? 
+            </p>
+            <input id="searchbar" class="input field is-rounded" placeholder="Search Cycle"/>
+            <button id="isrecyclable" class="button is-info">
+                <span class="icon">
+                    <i class="fa fa-search"></i>
+                </span>
+                <span>Search</span>
+                
+            </button>
+            
+
+
+            <div id="modal" class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                      <header class="modal-card-head">
+                        <p id="r-label" class="modal-card-title"></p>
+                        <button class="delete" aria-label="close"></button>
+                      </header>
+                      <section  class="modal-card-body">
+                          <div class="container">
+                                <ol id="ranked-labels"></ol>
+                          </div>
+                        
+                      </section>
+                      <footer class="modal-card-foot">
+                        
+                      </footer>
+                    </div>
+            </div>
+
+
+
+
+
+            <div id="modal1" class="modal">
+                <div  class="modal-background"></div>
+                <div class="modal-content">
+                    <div class="modal-card-body">
+                            <p id='modaltext'>Recyclable</p>
+                    </div>
+                    
+                </div>
+                <button id="closemodal" class="modal-close is-large" aria-label="close"></button>
+            </div>
+        </div>
+        <section id="info-section" class="container ">
+            <div class="columns features">
+                <div class="column is-4">
+                    <div class="card is-shady">
+                        <div class="card-image has-text-centered">
+                            <i class="fa fa-recycle"></i>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <h4>Benefits of Recycling</h4>
+                                <ul>
+                                    <li>Reduces waste sent to landfills</li>
+                                    <li>Conserves natural resources</li>
+                                    <li>Increase economic security</li>
+                                    <li>Reduces pollution</li>
+                                    <li>Saves energy</li>
+                                </ul>
+                                <p><a href="https://www.epa.gov/recycle/recycling-basics">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card is-shady">
+                        <div class="card-image has-text-centered">
+                            <i class="fa fa-empire"></i>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <h4>Tempor orci dapibus ultrices in.</h4>
+                                <p>Ut venenatis tellus in metus vulputate. Amet consectetur adipiscing elit pellentesque. Sed arcu non odio euismod lacinia at quis risus. Faucibus turpis in eu mi bibendum neque egestas cmonsu songue. Phasellus vestibulum lorem
+                                sed risus.</p>
+                                <p><a href="#">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card is-shady">
+                        <div class="card-image has-text-centered">
+                            <i class="fa fa-apple"></i>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <h4> Leo integer malesuada nunc vel risus. </h4>
+                                <p>Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam. Commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                                <p><a href="#">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="impact-section" class="intro column is-8 is-offset-2">
+                <h1 class="title">Our Impact</h1><br>
+                <h2 id="num-items" class="title has-text-weight-light">Cycle users have collectively recycled 0 items</h2>
+            </div>
+            <div class="sandbox has-text-centered">
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <p id = "test" class="title">2 million</p>
+                            <p class="subtitle">tons of recyclables end up in North Carolina's water streams</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <p class="title">50%</p>
+                            <p class="subtitle">of the 254 million tons of trash Americans throw away is Recyclable</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <p class="title">24 Hours</p>
+                            <p class="subtitle">spent on this project</p>
+                            <div class="content">
+                                <p>Recycling a single </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="tile is-ancestor">
+                    <div class="tile is-vertical is-8">
+                        <div class="tile">
+                            <div class="tile is-parent is-vertical">
+                                <article class="tile is-child notification is-white">
+                                    <p class="title">35 Billion</p>
+                                    <p class="subtitle">plastic bottles thrown away by Americans each year</p>
+                                </article>
+                                <article class="tile is-child notification is-white">
+                                    <p class="title">1 Aluminum cans</p>
+                                    <p class="subtitle">Saves enough energy to listen to a full album on your iPhone</p>
+                                </article>
+                            </div>
+                            <div class="tile is-parent">
+                                <article class="tile is-child notification is-white">
+                                    <p class="title">Conservation</p>
+                                    <p class="subtitle">is humanity's biggest challenge</p>
+                                    <figure class="image is-4by3">
+                                        <img src="assets/images/waste.jpg" alt="Description">
+                                    </figure>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="tile is-parent is-shady">
+                            <article class="tile is-child notification is-white">
+                                <p class="title">100 watt bulb</p>
+                                <p class="subtitle">According to a study done by the University of Georgia, 18 billion pounds of plastic trash winds up in our oceans each year. To put that in perspective, it’s enough trash to cover every foot of coastline around the world with five full trash bags of plastic…compounding every year.</p>
+                                <div class="content">
+                                    <p>A single recycled plastic bottle saves enough energy to run a 100-watt bulb for 4 hours. It also creates 20% less air pollution and 50% less water pollution than would be created when making a new bottle.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <div class="content">
+                                <p class="title">Recycling</p>
+                                <p class="subtitle">According to Wikipedia</p>
+                                <div class="content">
+                                    <p>Recycling is the process of converting waste materials into new materials and objects. It is an alternative to "conventional" waste disposal that can save material and help lower greenhouse gas emissions. Recycling can prevent the waste of potentially useful materials and reduce the consumption of fresh raw materials, thereby reducing: energy usage, air pollution (from incineration), and water pollution (from landfilling).</p>
+                                    <p>Recycling is a key component of modern waste reduction and is the third component of the "Reduce, Reuse, and Recycle" waste hierarchy.[1][2] Thus, recycling aims at environmental sustainability by substituting raw material inputs into and redirecting waste outputs out of the economic system.[3]</p>
+                                    <p>Recyclable materials include many kinds of glass, paper, cardboard, metal, plastic, tires, textiles, batteries, and electronics. The composting or other reuse of biodegradable waste—such as food or garden waste—is also a form of recycling.[4] Materials to be recycled are either delivered to a household recycling center or picked up from curbside bins, then sorted, cleaned, and reprocessed into new materials destined for manufacturing new products.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                
+                    
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-3 is-offset-2">
+                        <h2><strong>Learn More</strong></h2>
+                        <ul>
+                            <li><a href="https://www.epa.gov/recycle/recycling-basics">EPA Recycling Basics</a></li>
+                            <li><a href="https://web.mit.edu/12.000/www/m2016/finalwebsite/solutions/recycleawareness.html">
+                            Recycling Awareness</a></li>
+                        </ul>
+                    </div>
+                    <div class="column is-3">
+                        <h2><strong>Contribute</strong></h2>
+                        <ul>
+                            <li><a href="#">Donate Now</a></li>
+                            <li><a href="#">Contact a local representative</a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="column is-4">
+                        <h2><strong>Navigate</strong></h2>
+                        <ul>
+                            <li><a href="#search">Search</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+           
+        </footer>
+
+        <script src="assets/js/script.js"></script>
+
+       
+    </body>
+</html>

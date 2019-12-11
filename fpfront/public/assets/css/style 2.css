@@ -1,0 +1,13 @@
+
+.card:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    transform: scale(1.05);
+}
+.image-container {
+    padding: 10px;
+    
+}
+.upload-container {
+    margin-top: 40px;
+}
+
