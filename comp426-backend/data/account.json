@@ -22,6 +22,27 @@
         "first": "Vibhu",
         "last": "Ambil"
       }
+    },
+    "test": {
+      "passwordHash": "$2a$10$unUV5VwroCaeVO3WqsC7ou8dCLHfn8ITQ7RBpizYXjbFIg18pKQFe",
+      "data": {
+        "first": "test",
+        "last": "test1"
+      }
+    },
+    "a": {
+      "passwordHash": "$2a$10$NImbqnGzDaAnB9h0VfP/4u/Dtw4PMGaut3yFrtnMBbAC11NnbJWh2",
+      "data": {
+        "first": "a",
+        "last": "b"
+      }
+    },
+    "stevenc": {
+      "passwordHash": "$2a$10$Lx7o1t7pL/cb0quQc3QcnOeHeOolKWcP8xDU7sTc9R95O8AS1y67K",
+      "data": {
+        "first": "Steven",
+        "last": "Chen"
+      }
     }
   }
 }

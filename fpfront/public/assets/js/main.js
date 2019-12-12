@@ -123,27 +123,34 @@ $(document).ready(async () => {
 
 });
 
-function uploadImage(classifier) {
+async function itemIsRecyclable(list) {
+    let database = await getDatabase();
+    console.log(database);
+    for(let i = 0; i<list.length; i++) {
+        for(let j = 0; j<database.length; j++) {
+            if (database[j].toLowerCase().includes(list[i].toLowerCase())) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+async function uploadImage(classifier) {
     var files = $('#imagefileupload').prop("files")
     if(files.length == 1) {
         $('#upload-button').toggleClass('is-loading');
         let promise = classifier.uploadImage(files[0]);
         promise.then(async function(result) {
             //successful classification
-            if (result.recyclable) {
-                $('#r-label').html("Recyclable");
-                $('#r-label').toggleClass('has-text-success');
 
-            } else {
-                $('#r-label').html("Non-recyclable");
-                $('#r-label').toggleClass('has-text-success');
-            }
+            
             
 
             
             
             $('#ranked-labels').replaceWith(`<ol type="1" id="ranked-labels"></ol>`);
-            console.log(result.labels);
+    
             renderModalCard(result.labels);
             $('#modal').toggleClass('is-active');
             $('#upload-button').toggleClass('is-loading');
@@ -155,9 +162,23 @@ function uploadImage(classifier) {
 
             let user = await getStatus();
             if(user) {
+                let recyclable = await itemIsRecyclable(result.labels);
+            
+                if (recyclable) {
+                    $('#r-label').html("Recyclable");
+                    $('#r-label').toggleClass('has-text-success');
+    
+                } else {
+                    $('#r-label').html("Non-recyclable");
+                    $('#r-label').toggleClass('has-text-success');
+                }
+
                 await postImage(files[0], result.labels);
-                renderPosts();
-            }  
+
+                await renderPosts();
+            }  else {
+                $('#r-label').html("Sign in to get a classification");
+            }
             
             incrementCount();
 
@@ -187,7 +208,7 @@ function renderLoggedIn(user) {
     $('#login-button').remove();
     $('#welcome-message').html("Welcome to Cycle, "+user.user.data.first+'!');
 
-    console.log('JSLDKFKLSDF');
+    
     //add event handler for delete button
     $('#timeline-section').on('click', ".delete-post-button", null, deletePost);
     
@@ -207,7 +228,7 @@ async function deletePost(event) {
     let newList = deletePostFromJSON(id, data);
     updatePosts(newList);
 
-    $postDiv.hide("slow", function(){ tweetDiv.remove(); })
+    $postDiv.hide("slow", function(){ $postDiv.remove(); })
 
 
     
@@ -305,9 +326,9 @@ function renderFileUpload() {
 }
 
 async function renderPosts() {
-    
+
     let data = await getPosts();
-    console.log(data);
+    console.log('here');
     let timeline = $('#timeline-section');
     timeline.empty();
     for(let i = 0; i<data.length; i++) {
@@ -344,7 +365,11 @@ function renderCard(post) {
             <div class="content" >
                 <h4>${post.labels[0]}</h4>
                 
-                    <p> ${post.labels}<p>
+                    <ul>
+                        <li>${post.labels[0]}</li>
+                        <li>${post.labels[1]}</li>
+                        <li>${post.labels[2]}</li>
+                    <ul>
                     
                 
             
@@ -354,6 +379,8 @@ function renderCard(post) {
 </div>`
     return html;
 }
+
+
 
 function renderModalCard(data) {
 

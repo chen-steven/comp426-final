@@ -52,8 +52,9 @@ async function signUpUser(event) {
         baseURL: "http://localhost:3000/"
     });
     //await userAxios.post('/user/users', {"name":username});
-    return await pubRoot.post(`/create/`, {'name':username, 'pass':password, data:{'first':fname, 'last':lname}});
-
+    let res =  await pubRoot.post(`/create/`, {'name':username, 'pass':password, data:{'first':fname, 'last':lname}});
+    location.reload();
+    return res;
     
 
 

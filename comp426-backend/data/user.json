@@ -43,10 +43,92 @@
           "Plastic"
         ],
         "id": 13
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 17
+      },
+      {
+        "file": {},
+        "labels": [
+          "White",
+          "Bag",
+          "Plastic"
+        ],
+        "id": 19
+      },
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Orange soft drink",
+          "Glass bottle",
+          "Orange drink",
+          "Beer bottle",
+          "Non-alcoholic beverage",
+          "Squash",
+          "Beer",
+          "Soft drink"
+        ],
+        "id": 20
+      },
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Orange soft drink",
+          "Glass bottle",
+          "Orange drink",
+          "Beer bottle",
+          "Non-alcoholic beverage",
+          "Squash",
+          "Beer",
+          "Soft drink"
+        ],
+        "id": 28
+      },
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Liqueur",
+          "Wine bottle",
+          "Product",
+          "Wine",
+          "Alcoholic beverage",
+          "Glass bottle",
+          "Distilled beverage",
+          "Red wine"
+        ],
+        "id": 29
+      },
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Liqueur",
+          "Wine bottle",
+          "Product",
+          "Wine",
+          "Alcoholic beverage",
+          "Glass bottle",
+          "Distilled beverage",
+          "Red wine"
+        ],
+        "id": 30
       }
     ],
     "count": {
-      "count": 16
+      "count": 31
     }
   },
   "gdimi": {
@@ -325,6 +407,29 @@
           "Plastic"
         ],
         "id": 24
+      }
+    ]
+  },
+  "a": {
+    "count": {
+      "count": 1
+    },
+    "post": [
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Orange soft drink",
+          "Glass bottle",
+          "Orange drink",
+          "Beer bottle",
+          "Non-alcoholic beverage",
+          "Squash",
+          "Beer",
+          "Soft drink"
+        ],
+        "id": 0
       }
     ]
   }
