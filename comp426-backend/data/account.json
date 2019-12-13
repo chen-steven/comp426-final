@@ -43,6 +43,13 @@
         "first": "Steven",
         "last": "Chen"
       }
+    },
+    "spikeball": {
+      "passwordHash": "$2a$10$rNtEWjrWyf0EzrqaKuLD3O4beOYhP/ptN7Qicd9i/lb7HXtjAWNYK",
+      "data": {
+        "first": "oatmeal",
+        "last": "spikeball"
+      }
     }
   }
 }

@@ -181,7 +181,7 @@ async function uploadImage(classifier) {
             }
             
             incrementCount();
-
+            
             //$('#num-items').html('Cycle users have collectively recycled '+result.main_number+' items!');
         });
             

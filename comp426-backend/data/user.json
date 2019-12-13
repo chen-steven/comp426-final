@@ -20,67 +20,6 @@
       {
         "file": {},
         "labels": [
-          "White",
-          "Bag",
-          "Plastic"
-        ],
-        "id": 8
-      },
-      {
-        "file": {},
-        "labels": [
-          "White",
-          "Bag",
-          "Plastic"
-        ],
-        "id": 9
-      },
-      {
-        "file": {},
-        "labels": [
-          "White",
-          "Bag",
-          "Plastic"
-        ],
-        "id": 13
-      },
-      {
-        "file": {},
-        "labels": [
-          "White",
-          "Bag",
-          "Plastic"
-        ],
-        "id": 17
-      },
-      {
-        "file": {},
-        "labels": [
-          "White",
-          "Bag",
-          "Plastic"
-        ],
-        "id": 19
-      },
-      {
-        "file": {},
-        "labels": [
-          "Bottle",
-          "Drink",
-          "Orange soft drink",
-          "Glass bottle",
-          "Orange drink",
-          "Beer bottle",
-          "Non-alcoholic beverage",
-          "Squash",
-          "Beer",
-          "Soft drink"
-        ],
-        "id": 20
-      },
-      {
-        "file": {},
-        "labels": [
           "Bottle",
           "Drink",
           "Orange soft drink",
@@ -430,6 +369,45 @@
           "Soft drink"
         ],
         "id": 0
+      }
+    ]
+  },
+  "spikeball": {
+    "count": {
+      "count": 2
+    },
+    "post": [
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Liqueur",
+          "Wine bottle",
+          "Product",
+          "Wine",
+          "Alcoholic beverage",
+          "Glass bottle",
+          "Distilled beverage",
+          "Red wine"
+        ],
+        "id": 0
+      },
+      {
+        "file": {},
+        "labels": [
+          "Bottle",
+          "Drink",
+          "Orange soft drink",
+          "Glass bottle",
+          "Orange drink",
+          "Beer bottle",
+          "Non-alcoholic beverage",
+          "Squash",
+          "Beer",
+          "Soft drink"
+        ],
+        "id": 1
       }
     ]
   }
